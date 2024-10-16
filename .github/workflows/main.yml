@@ -12,8 +12,11 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
       - name: List environment
         run: export
       - name: echo secret1
         run: echo ${{ secrets.ftppassword}}
-                  
+      - name: run ftp 
+        run: bash ftp.sh server 21 ${{ secrets.ftppassword}}
